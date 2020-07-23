@@ -227,7 +227,7 @@ const pets = [
           domString +=      `<img src="${pets[i].imageUrl}"/>`
           domString +=      `<div class="pet-color">${pets[i].color}</div>`
           domString +=      `<div class="pet-specialSkill">${pets[i].specialSkill}</div>`
-          domString +=      `<div class="pet-type">${pets[i].type}</div>`
+          domString +=      `<footer class="pet-type">${pets[i].type}</footer>`
           domString +=`</div>`
       }
       printToDom('pets', domString)
