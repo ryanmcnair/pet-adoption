@@ -1,0 +1,43 @@
+body {
+    background-color: hotpink;
+}
+
+.container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.button {
+    margin: 5px 10px;
+}
+
+.pets {
+    padding: 3px;
+    display: flex;
+    flex-flow: row wrap;
+}
+.pet img {
+    width: 200px;
+    height: 150px;
+}
+.pet {
+    font-family: 'Hind', sans-serif;
+    background-color: seashell;
+    border: 2px solid black;
+    margin: 5px;
+    text-align: center;
+    width: 200px;
+    height: 350px;
+}
+.pet-color {
+    border-bottom: solid black;
+}
+.pet-specialSkill {
+    border-bottom: dotted blueviolet;
+}
+.pet-name {
+    text-size-adjust: 32px;
+    font-family: 'Rowdies', cursive;
+    background-color: lightgreen;
+}
