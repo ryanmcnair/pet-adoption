@@ -41,7 +41,7 @@ const pets = [
       color: "Black",
       specialSkill: "Can read (but cannot understand) Hebrew.",
       type: "dog",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Basset_Hound_600.jpg"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRkSW5uV0Aagpm8edGCUONGg3ykl6YKgukj-g&usqp=CAU"
     },
     {
       name: "Oreo",
@@ -202,7 +202,7 @@ const pets = [
       color: "Green",
       specialSkill: "Gives hugs with appropriate pressure and for the right length of time.",
       type: "cat",
-      imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS758hREWxt7D9KOo2S4kO4qczOiDVXfLM9-A&usqp=CAU"
     },
     {
       name: "Lucy",
@@ -213,23 +213,50 @@ const pets = [
     }
   ];
 
+  const handleButtonClick = (e) => {
+    // console.log("click me!");
+    const buttonId = e.target.id;
+    const selectedPets = [];
+    for (let i = 0; i < pets.length; i++){
+      if (pets[i].type === buttonId) {
+        selectedPets.push(pets[i])
+  }
+      buildPetAdoption(selectedPets);
+  }
+    if (buttonId === 'allPets' || buttonId === e.currentTarget.id) {
+    buildPetAdoption(pets)
+    } else {
+    buildPetAdoption(selectedPets);
+  }
+  }
+
   const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
     selectedDiv.innerHTML = textToPrint;
 }
 
-  const buildPetAdoption = () => {
+  const buildPetAdoption = (dogsAndCats) => {
       let domString = '';
 
-      for (let i = 0; i  < pets.length; i++){
-          domString += `<div class="pet">`
-          domString +=      `<div class="pet-name">${pets[i].name}</div>`
-          domString +=      `<img src="${pets[i].imageUrl}"/>`
-          domString +=      `<div class="pet-color">${pets[i].color}</div>`
-          domString +=      `<div class="pet-specialSkill">${pets[i].specialSkill}</div>`
-          domString +=      `<footer class="pet-type">${pets[i].type}</footer>`
-          domString +=`</div>`
+      for (let i = 0; i  < dogsAndCats.length; i++){
+          domString += `<div class="pet">`;
+          domString +=      `<div class="pet-name">${dogsAndCats[i].name}</div>`;
+          domString +=      `<img src="${dogsAndCats[i].imageUrl}"/>`;
+          domString +=      `<div class="pet-color">${dogsAndCats[i].color}</div>`;
+          domString +=      `<div class="pet-specialSkill">${dogsAndCats[i].specialSkill}</div>`;
+          domString +=      `<footer class="pet-type">${dogsAndCats[i].type}</footer>`;
+          domString +=`</div>`;
       }
-      printToDom('pets', domString)
+      printToDom('pets', domString);
   }
-  buildPetAdoption();
+
+  const buttonEvents = () => {
+      document.getElementById('animal-buttons').addEventListener('click', handleButtonClick)
+  }
+
+ const init = () => {
+      buttonEvents();
+      buildPetAdoption(pets);
+ }
+
+ init();
